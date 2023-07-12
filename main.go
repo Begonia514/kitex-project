@@ -9,10 +9,11 @@ import (
 )
 
 func main() {
-	svr := demo.NewServer(new(StudentServiceImpl))
-
+	// svr := demo.NewServer(new(StudentServiceImpl))
+	var svr server.Server
+	
 	addr, _ := net.ResolveTCPAddr("tcp", ":9999")
-	svr = studentservice.NewServer(handler, server.WithServiceAddr(addr))
+	svr = studentservice.NewServer(new(StudentServiceImpl), server.WithServiceAddr(addr))
 
 	err := svr.Run()
 
