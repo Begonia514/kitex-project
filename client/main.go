@@ -12,7 +12,9 @@ import (
 
 
 func main(){
+
 	c,err:= studentservice.NewClient("example",client.WithHostPorts("127.0.0.1:9999"))
+	
 	if err!=nil{
 		log.Fatal(err)
 	}
