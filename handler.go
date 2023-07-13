@@ -19,6 +19,7 @@ func (s *StudentServiceImpl) Register(ctx context.Context, student *demo.Student
 	klog.Infof("Received: ID: %d, Name: %s",student.Id,student.Name )
 	resp = &demo.RegisterResp{
 		Message: "OK!",
+		Success: true,
 	}
 	
 	return
