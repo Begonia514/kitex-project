@@ -14,7 +14,7 @@ var studentmap map[int]demo.Student = make(map[int]demo.Student)
 
 // Register implements the StudentServiceImpl interface.
 func (s *StudentServiceImpl) Register(ctx context.Context, student *demo.Student) (resp *demo.RegisterResp, err error) {
-	// TODO: Your code here...
+	// TODO: finish and smoking test OK!!
 
 	_, ok := studentmap[int(student.Id)]
 
@@ -40,7 +40,7 @@ func (s *StudentServiceImpl) Register(ctx context.Context, student *demo.Student
 
 // Query implements the StudentServiceImpl interface.
 func (s *StudentServiceImpl) Query(ctx context.Context, req *demo.QueryReq) (resp *demo.Student, err error) {
-	// TODO: Your code here...
+	// TODO: finishi and smoking test OK!!
 
 	value, ok := studentmap[int(req.Id)]
 	if !ok {
