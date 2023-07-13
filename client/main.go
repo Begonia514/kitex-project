@@ -1,20 +1,32 @@
 package main
 
 import (
-	"log"
 	"context"
+	"log"
+	"time"
+
 	// "time"
 
-	"project3/kitex_gen/kitex/demo/studentservice"
 	demo "project3/kitex_gen/kitex/demo"
+	"project3/kitex_gen/kitex/demo/studentservice"
+
 	"github.com/cloudwego/kitex/client"
+	etcd "github.com/kitex-contrib/registry-etcd"
 )
 
 
 func main(){
 
-	c,err:= studentservice.NewClient("example",client.WithHostPorts("127.0.0.1:9999"))
-	
+
+	r, err := etcd.NewEtcdResolver([]string{"127.0.0.1:2379"})
+
+	if err != nil{
+		log.Fatal(err)
+	}
+
+	//c,err:= studentservice.NewClient("example",client.WithHostPorts("127.0.0.1:9999"))
+	c := studentservice.MustNewClient("student",client.WithResolver(r))
+
 	if err!=nil{
 		log.Fatal(err)
 	}
@@ -31,12 +43,25 @@ func main(){
 		Email: nil,
 	}
 
+	for{
+		ctx, cancel := context.WithTimeout(context.Background(),time.Second*3)
+		resp, err := c.Register(ctx,RegiReq)
+		cancel()
+		if err != nil{
+			log.Fatal(err)
+		}
+		log.Println(resp)
+		time.Sleep(time.Second)
+	}
+	/*
 	RegiResp,err := c.Register(context.Background(),RegiReq)
 
 	if err != nil{
 		log.Fatal(err)
 	}
 	log.Println(RegiResp)
+
+	*/
 
 
 	// QueryResp :=&demo.Student{
