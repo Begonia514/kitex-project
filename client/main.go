@@ -14,55 +14,52 @@ import (
 	etcd "github.com/kitex-contrib/registry-etcd"
 )
 
+func main() {
 
-func main(){
-
+	// push test by leo
 
 	r, err := etcd.NewEtcdResolver([]string{"127.0.0.1:2379"})
 
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	//c,err:= studentservice.NewClient("example",client.WithHostPorts("127.0.0.1:9999"))
-	c := studentservice.MustNewClient("student",client.WithResolver(r))
+	c := studentservice.MustNewClient("student", client.WithResolver(r))
 
-	if err!=nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
-
-
 	RegiReq := &demo.Student{
-		Id: 10,
+		Id:   10,
 		Name: "begonia",
 		College: &demo.College{
-			Name: "nju",
+			Name:    "nju",
 			Address: "no",
 		},
 		Email: nil,
 	}
 
-	for{
-		ctx, cancel := context.WithTimeout(context.Background(),time.Second*3)
-		resp, err := c.Register(ctx,RegiReq)
+	for {
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second*3)
+		resp, err := c.Register(ctx, RegiReq)
 		cancel()
-		if err != nil{
+		if err != nil {
 			log.Fatal(err)
 		}
 		log.Println(resp)
 		time.Sleep(time.Second)
 	}
 	/*
-	RegiResp,err := c.Register(context.Background(),RegiReq)
+		RegiResp,err := c.Register(context.Background(),RegiReq)
 
-	if err != nil{
-		log.Fatal(err)
-	}
-	log.Println(RegiResp)
+		if err != nil{
+			log.Fatal(err)
+		}
+		log.Println(RegiResp)
 
 	*/
-
 
 	// QueryResp :=&demo.Student{
 	// 	Id: 10,
@@ -73,7 +70,5 @@ func main(){
 	// 	},
 	// 	Email: nil,
 	// }
-
-
 
 }
