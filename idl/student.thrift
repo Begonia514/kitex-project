@@ -11,6 +11,7 @@ struct Student {
     2: required string name(api.body='name'),
     3: required College college(api.body='college'),
     4: optional list<string> email(api.body='email'),
+    5: required string gender(api.body='gender')
 }
 
 struct RegisterResp {

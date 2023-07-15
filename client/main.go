@@ -7,8 +7,8 @@ import (
 
 	// "time"
 
-	demo "project3/kitex_gen/kitex/demo"
-	"project3/kitex_gen/kitex/demo/studentservice"
+	demo "kitex-project/kitex_gen/kitex/demo"
+	"kitex-project/kitex_gen/kitex/demo/studentservice"
 
 	"github.com/cloudwego/kitex/client"
 	etcd "github.com/kitex-contrib/registry-etcd"

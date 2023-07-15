@@ -1,4 +1,4 @@
-module project3
+module kitex-project
 
 go 1.20
 

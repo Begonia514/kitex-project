@@ -3,7 +3,7 @@ package studentservice
 
 import (
 	server "github.com/cloudwego/kitex/server"
-	demo "project3/kitex_gen/kitex/demo"
+	demo "kitex-project/kitex_gen/kitex/demo"
 )
 
 // NewServer creates a server.Server with the given handler and options.

@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	demo "project3/kitex_gen/kitex/demo"
+	demo "kitex-project/kitex_gen/kitex/demo"
 
 	"github.com/cloudwego/kitex/pkg/klog"
 )
