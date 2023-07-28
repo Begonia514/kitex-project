@@ -15,7 +15,7 @@ var studentmap map[int]demo.Student = make(map[int]demo.Student)
 // Register implements the StudentServiceImpl interface.
 func (s *StudentServiceImpl) Register(ctx context.Context, student *demo.Student) (resp *demo.RegisterResp, err error) {
 	// TODO: finish and smoking test OK!!
-
+	klog.Info("register")
 	_, ok := studentmap[int(student.Id)]
 
 	if ok {
